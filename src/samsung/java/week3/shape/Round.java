@@ -1,7 +1,7 @@
 package samsung.java.week3.shape;
 import java.lang.Math;
 public class Round {
-	private double radius;
+	protected double radius;
 	// Constructor
 	public Round() {};
 	public Round(double initRadius) {
