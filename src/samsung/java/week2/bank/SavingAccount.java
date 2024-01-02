@@ -85,7 +85,7 @@ public class SavingAccount {
 	
 	public void Settlement() {
 		System.out.println("Sum Money: " + (money + InterestMoney()));
-		setMoney(0);
+		this.money = 0;
 		updateDay();
 	}
 
