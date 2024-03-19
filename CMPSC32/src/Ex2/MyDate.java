@@ -37,7 +37,7 @@ public class MyDate {
 		return this.day;
 	}
 	
-	// • addDays(int Days): phương thức này sẽ di chuyển đối tượng MyDate này về phía trước theo số ngày đã cho.
+	// Phương thức addDays(int Days): phương thức này sẽ di chuyển đối tượng MyDate này về phía trước theo số ngày đã cho.
 	// Ví dụ: nếu ngày hiện tại là 28/2/2020, nếu chúng ta cộng thêm 3 ngày thì nó sẽ trở thành 2020/3/2
 	public boolean checkLeapYear(int year) {
 		return (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0));
@@ -61,12 +61,12 @@ public class MyDate {
 			 * vi du : Hien tai: 20/3/2024, thang 3 co 31 ngay thi 31 ngay sau se la 20/4/2024
 			 * 		   Thang 4 co 30 ngay thi 30 ngay sau cua ngay 20/4/2024 se la ngay 20/5/2024
 			 */
-			day -= daysInMonth[this.month];		// Neu so ngay them > so ngay trong thang hien tai
-			month++;							// Tang thang len 1
+			day -= daysInMonth[this.month];		// Trừ số ngày thêm cho số ngày của tháng tiếp theo
+			month++;							// Tháng tăng lên 1
 			if(month > 12) {					// Sau khi Thang tang len 1, Neu thang > 12
 				year++;							// Thi Year tang len 1
-				month = 1;						// Reset lai Month ve 1
-				if(checkLeapYear(year)) {		// Kiem tra lai Nam Nhuan
+				month = 1;						// Reset tháng về 1
+				if(checkLeapYear(year)) {		// Kiểm tra lại năm nhuận
 					daysInMonth[1] = 29;
 				}else {
 					daysInMonth[1] = 28;
@@ -95,7 +95,7 @@ public class MyDate {
 		if(month == 2 & checkLeapYear(year)) {
 			return 29;
 		}
-		// Mang so ngay cua 12 thang theo index
+		// Mảng chứa số ngày của 12 tháng
 		int[] daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
 		return daysInMonth[this.month-1];
 	}
@@ -140,7 +140,7 @@ public class MyDate {
 	// Tra ve khoang cach tu ngay hien tai den ngay cuoi cung trong nam . Vi du 31/12/2024
 	public int daysToEndofYear() {
 		MyDate lastDay = new MyDate(2024,12,31);
-		// Dung lai ham tinh khoang cach giua 2 ngay
+		// Dùng lại hàm tính khoảng cách giữa 2 ngày
 		return this.Daysto(lastDay);
 	}
 	// isBefore(other:MyDate): trả về ngày hiện tại có trước ngày kia hay không.
@@ -159,7 +159,7 @@ public class MyDate {
 	}
 		return false;
 	}
-	// Tra ve chuoi la ten cua Ngay trong tieng Anh
+	// Trả về chuỗi là Tên của Ngày trong tiếng Anh
 	public String dateInEnglish() {
 		String[] monthInEnglish = {"January", "February", "March", "April", "May", "June","July","August","September","October","November","December"};
 		return String.format("%s, %d, %d", monthInEnglish[month-1], day, year);
