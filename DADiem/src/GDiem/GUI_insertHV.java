@@ -102,6 +102,20 @@ public class GUI_insertHV extends JFrame {
 				updateTableData();
 			}
 		});
+	tbHocVien.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
+				int selectedRow = tbHocVien.getSelectedRow();
+				if(selectedRow >= 0) {
+					txtMaHV.setText(modelHocVien.getValueAt(selectedRow, 0).toString());
+					txtHoTen.setText(modelHocVien.getValueAt(selectedRow, 1).toString());
+					txtDiem.setText(modelHocVien.getValueAt(selectedRow, 2).toString());
+					cmbLop.setSelectedItem(modelHocVien.getValueAt(selectedRow, 3));
+				}
+			}
+		});
         updateTableData();
 	}
 	public void updateTableData() {
